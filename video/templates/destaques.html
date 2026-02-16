@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destaques - XPPP</title>
+<style>
+* { box-sizing: border-box; }
+body { background:#000; color:#fff; font-family: Arial, sans-serif; margin:0; padding:20px; }
+h1 { color:#f00; text-align:center; margin-bottom:20px; }
+
+/* Barra de pesquisa */
+.search-box {
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+}
+.search-box input {
+    width:70%;
+    padding:10px;
+    border-radius:8px 0 0 8px;
+    border:none;
+    outline:none;
+    background:#111;
+    color:#fff;
+}
+.search-box button {
+    padding:10px 15px;
+    background:#e60000;
+    color:#fff;
+    border:none;
+    border-radius:0 8px 8px 0;
+    cursor:pointer;
+}
+
+/* Grid de destaques */
+.grid {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    padding:12px;
+}
+
+/* Card do vídeo */
+.card {
+    background:#0f0f0f;
+    border-radius:12px;
+    overflow:hidden;
+    transition:0.25s;
+    border:2px solid #e60000; /* destaque vermelho */
+}
+.card:hover { transform:scale(1.03); }
+
+/* Thumbnail do vídeo */
+.thumb {
+    width:100%;
+    height:260px;
+    overflow:hidden;
+}
+.thumb img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* Título */
+.card p {
+    margin:0;
+    padding:8px 10px;
+    font-size:14px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/* Paginação */
+.buttons{
+    text-align:center;
+    margin:20px 0;
+}
+.buttons a{
+    background:#e60000;
+    color:#fff;
+    padding:8px 18px;
+    margin:6px;
+    border-radius:6px;
+    text-decoration:none;
+}
+
+/* Footer */
+footer{
+    background:#0b0b0b;
+    border-top:1px solid #222;
+    text-align:center;
+    padding:14px;
+    font-size:14px;
+    color:#aaa;
+}
+footer a{
+    color:#fff;
+    text-decoration:none;
+}
+
+/* Desktop */
+@media(min-width:800px){
+    .grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+</style>
+</head>
+<body>
+
+<h1>Vídeos em Destaque</h1>
+
+<!-- Barra de pesquisa -->
+<form class="search-box" action="/search/">
+    <input type="text" name="q" placeholder="Pesquisar vídeos...">
+    <button>🔍</button>
+</form>
+
+<!-- Grid de vídeos -->
+<div class="grid">
+    {% for v in page_obj %}
+        <a href="{% url 'ver_video' v.slug %}" class="card">
+            <div class="thumb">
+                <img src="{{ v.capa.url }}">
+            </div>
+            <p title="{{ v.titulo }}">{{ v.titulo }}</p>
+        </a>
+    {% endfor %}
+</div>
+
+<!-- Paginação -->
+<div class="buttons">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">⬅ Anterior</a>
+    {% endif %}
+
+    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Próximo ➡</a>
+    {% endif %}
+</div>
+
+<footer>
+    <a href="/destaques/">⭐ Destaques</a> | © 2026 XPPP
+</footer>
+
+</body>
+</html>
