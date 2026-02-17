@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+
 from pathlib import Path
 import os
 
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-ag5pis5w3@@m49t24=7h+%11jo_5#-%q!ql!^f(^u12@6*1&#b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,19 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'video',
+    'video.apps.VideoConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # para tradução
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'video.middleware.TrafficLoggingMiddleware',
     'video.middleware.Handle404Middleware',
+   
 ]
 
 ROOT_URLCONF = 'sex.urls'
@@ -106,13 +109,26 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
+
+LANGUAGES = [
+    ('pt', 'Português'),
+    ('en', 'Inglês'),
+]
+
+MODELTRANSLATION_DEFAULT_LANGUAGE='pt'
+
+
+# Pasta onde ficarão os arquivos de tradução
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 INSTALLED_APPS += [
     'cloudinary',
@@ -127,6 +143,21 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '591966314826813',
     'API_SECRET': 'xrfCJpnFcTts0g9JXdyaznfG1Bg',
 }
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+cloudinary.config(
+    cloud_name=CLOUDINARY_STORAGE['CLOUD_NAME'],
+    api_key=CLOUDINARY_STORAGE['API_KEY'],
+    api_secret=CLOUDINARY_STORAGE['API_SECRET'],
+    secure=True
+)
 
 # URL base para arquivos de mídia (não precisa alterar muito)
 MEDIA_URL = '/media/'

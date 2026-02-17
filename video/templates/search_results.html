@@ -1,9 +1,12 @@
+{% load i18n %}
+
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resultados da pesquisa - {{ query }}</title>
+<title>{% trans "Resultados da pesquisa" %} - {{ query }}</title>
+
 <style>
 body { background:#000; color:#fff; font-family: Arial, sans-serif; margin:20px; }
 h1 { color:#f00; margin-bottom:20px; text-align:center; }
@@ -16,12 +19,13 @@ h1 { color:#f00; margin-bottom:20px; text-align:center; }
 footer { margin-top:30px; text-align:center; color:#aaa; }
 </style>
 </head>
+
 <body>
 
-<h1>Resultados para "{{ query }}"</h1>
+<h1>{% trans "Resultados para" %} "{{ query }}"</h1>
 
 {% if categorias %}
-<h2>Categorias relacionadas:</h2>
+<h2>{% trans "Categorias relacionadas:" %}</h2>
 <ul>
     {% for c in categorias %}
         <li><a href="#">{{ c.nome }}</a></li>
@@ -30,7 +34,7 @@ footer { margin-top:30px; text-align:center; color:#aaa; }
 {% endif %}
 
 {% if videos %}
-<h2>Vídeos relacionados:</h2>
+<h2>{% trans "Vídeos relacionados:" %}</h2>
 <div class="grid">
     {% for v in videos %}
     <a href="{% url 'ver_video' v.slug %}" class="card">
@@ -42,7 +46,7 @@ footer { margin-top:30px; text-align:center; color:#aaa; }
     {% endfor %}
 </div>
 {% else %}
-<p>Nenhum vídeo encontrado. Aqui estão alguns aleatórios:</p>
+<p>{% trans "Nenhum vídeo encontrado. Aqui estão alguns aleatórios:" %}</p>
 <div class="grid">
     {% for v in videos %}
     <a href="{% url 'ver_video' v.slug %}" class="card">

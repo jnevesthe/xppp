@@ -1,5 +1,8 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="{{ LANGUAGE_CODE }}"
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -166,13 +169,30 @@ footer a{
 
     <!-- Links para categorias e destaques -->
     <div class="header-links">
-        <a href="{% url 'categorias' %}">Categorias</a> | <a href="{% url 'emphasis' %}">Destaques</a>
+        <a href="{% url 'categorias' %}">{% trans "Categorias" %}</a> | 
+        <a href="{% url 'emphasis' %}">{% trans "Destaques" %}</a>
     </div>
 
     <form class="search-box" action="/search/">
-        <input type="text" name="q" placeholder="Pesquisar vídeos...">
+        <input type="text" name="q" placeholder="{% trans 'Pesquisar vídeos...' %}">
         <button>🔍</button>
     </form>
+
+    <div style="margin-top:10px; text-align:center;">
+    <form action="{% url 'set_language' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <select name="language" onchange="this.form.submit()"
+            style="padding:6px 10px;
+                   border-radius:8px;
+                   background:#111;
+                   color:#fff;
+                   border:1px solid #333;
+                   cursor:pointer;">
+            <option value="pt" {% if LANGUAGE_CODE == 'pt' %}selected{% endif %}>🇵🇹 Português</option>
+            <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>🇺🇸 English</option>
+        </select>
+    </form>
+</div>
 </header>
 
 <div class="grid">
@@ -188,18 +208,20 @@ footer a{
 
 <div class="buttons">
     {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}">⬅ Anterior</a>
+        <a href="?page={{ page_obj.previous_page_number }}">⬅ {% trans "Anterior" %}</a>
     {% endif %}
 
     {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
 
     {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Próximo ➡</a>
+        <a href="?page={{ page_obj.next_page_number %}">{% trans "Próximo" %} ➡</a>
     {% endif %}
 </div>
 
+ 
+
 <footer>
-    <a href="/destaques/">⭐ Destaques</a> | © 2026 XPPP
+    <a href="/destaques/">⭐ {% trans "Destaques" %}</a> | © 2026 XPPP
 </footer>
 
 </body>

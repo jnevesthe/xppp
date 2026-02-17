@@ -1,5 +1,7 @@
+{% load i18n %}
+
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -131,7 +133,6 @@ footer a {
 footer a:hover {
     color: #e60000;
 }
-
 </style>
 </head>
 
@@ -139,8 +140,9 @@ footer a:hover {
 
 <header>
     <div class="logo"><span>X</span>PPP</div>
+
     <form class="search-box" action="/search/">
-        <input type="text" name="q" placeholder="Pesquisar vídeos...">
+        <input type="text" name="q" placeholder="{% trans 'Pesquisar vídeos...' %}">
         <button>🔍</button>
     </form>
 </header>
@@ -150,20 +152,24 @@ footer a:hover {
 
     <video controls>
         <source src="{{ video.video.url }}" type="video/mp4">
-        Seu navegador não suporta vídeo.
+        {% trans "Seu navegador não suporta vídeo." %}
     </video>
 
     <div class="actions">
         <!-- Botão de download -->
-        <a href="{{ video.video.url }}" download class="download">⬇️ Download</a>
+        <a href="{{ video.video.url }}" download class="download">
+            ⬇️ {% trans "Download" %}
+        </a>
 
         <!-- Botão de voltar -->
-        <a href="{% url 'galeria' %}" class="voltar">⬅ Voltar</a>
+        <a href="{% url 'galeria' %}" class="voltar">
+            ⬅ {% trans "Voltar" %}
+        </a>
     </div>
 </div>
 
 <footer>
-    © 2026 XPPP | <a href="{% url 'emphasis' %}">Destaques</a>
+    © 2026 XPPP | <a href="{% url 'emphasis' %}">{% trans "Destaques" %}</a>
 </footer>
 
 </body>

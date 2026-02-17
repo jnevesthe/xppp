@@ -1,9 +1,12 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Destaques - XPPP</title>
+<title>{% blocktrans %}Destaques - XPPP{% endblocktrans %}</title>
 <style>
 * { box-sizing: border-box; }
 body { background:#000; color:#fff; font-family: Arial, sans-serif; margin:0; padding:20px; }
@@ -111,11 +114,11 @@ footer a{
 </head>
 <body>
 
-<h1>Vídeos em Destaque</h1>
+<h1>{% trans "Vídeos em Destaque" %}</h1>
 
 <!-- Barra de pesquisa -->
 <form class="search-box" action="/search/">
-    <input type="text" name="q" placeholder="Pesquisar vídeos...">
+    <input type="text" name="q" placeholder="{% trans 'Pesquisar vídeos...' %}">
     <button>🔍</button>
 </form>
 
@@ -134,18 +137,18 @@ footer a{
 <!-- Paginação -->
 <div class="buttons">
     {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}">⬅ Anterior</a>
+        <a href="?page={{ page_obj.previous_page_number }}">⬅ {% trans "Anterior" %}</a>
     {% endif %}
 
-    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+    {% blocktrans %}Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}{% endblocktrans %}
 
     {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Próximo ➡</a>
+        <a href="?page={{ page_obj.next_page_number %}">{% trans "Próximo" %} ➡</a>
     {% endif %}
 </div>
 
 <footer>
-    <a href="/destaques/">⭐ Destaques</a> | © 2026 XPPP
+    <a href="/destaques/">⭐ {% trans "Destaques" %}</a> | © 2026 XPPP
 </footer>
 
 </body>

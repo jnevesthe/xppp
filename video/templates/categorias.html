@@ -1,13 +1,15 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Categorias | XPPP</title>
+<title>{% blocktrans %}Categorias | XPPP{% endblocktrans %}</title>
 
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
+* { box-sizing: border-box; margin: 0; padding: 0; }                                                
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: #000;
@@ -116,11 +118,11 @@ footer a:hover {
 <body>
 
 <header>
-    <h1>Categorias</h1>
+    <h1>{% trans "Categorias" %}</h1>
 
     <!-- Barra de pesquisa -->
     <form method="get" action="/search/" class="search-box">
-        <input type="text" name="q" placeholder="Pesquisar vídeos...">
+        <input type="text" name="q" placeholder="{% trans 'Pesquisar vídeos...' %}">
         <button>🔍</button>
     </form>
 </header>
@@ -134,13 +136,14 @@ footer a:hover {
                 </a>
             </div>
         {% empty %}
-            <p>Nenhuma categoria cadastrada.</p>
+            <p>{% trans "Nenhuma categoria cadastrada." %}</p>
         {% endfor %}
     </div>
 </main>
 
 <footer>
-    <a href="/">🏠 Home</a> | <a href="/emphasis/">⭐ Destaques</a>
+    <a href="/">{% trans "🏠 Home" %}</a> | 
+    <a href="/emphasis/">{% trans "⭐ Destaques" %}</a>
 </footer>
 
 </body>

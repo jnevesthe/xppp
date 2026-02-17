@@ -1,5 +1,6 @@
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -130,12 +131,12 @@ header{
     <div class="logo"><span>X</span>PPP</div>
 
     <form class="search-box" action="/search/">
-        <input type="text" name="q" placeholder="Pesquisar vídeos...">
+        <input type="text" name="q" placeholder="{% trans 'Pesquisar vídeos...' %}">
         <button>🔍</button>
     </form>
 </header>
 
-<h1 class="cat-title">Categoria: {{ categoria.nome }}</h1>
+<h1 class="cat-title">{% trans "Categoria" %}: {{ categoria.nome }}</h1>
 
 <div class="grid">
     {% for v in videos %}
@@ -146,19 +147,19 @@ header{
             <p title="{{ v.titulo }}">{{ v.titulo }}</p>
         </a>
     {% empty %}
-        <p style="text-align:center;width:100%">Nenhum vídeo nesta categoria.</p>
+        <p style="text-align:center;width:100%">{% trans "Nenhum vídeo nesta categoria." %}</p>
     {% endfor %}
 </div>
 
 <div class="buttons">
     {% if videos.has_previous %}
-        <a href="?page={{ videos.previous_page_number }}">⬅ Anterior</a>
+        <a href="?page={{ videos.previous_page_number }}">⬅ {% trans "Anterior" %}</a>
     {% endif %}
 
     {{ videos.number }} / {{ videos.paginator.num_pages }}
 
     {% if videos.has_next %}
-        <a href="?page={{ videos.next_page_number }}">Próximo ➡</a>
+        <a href="?page={{ videos.next_page_number %}">{% trans "Próximo" %} ➡</a>
     {% endif %}
 </div>
 
