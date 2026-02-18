@@ -19,26 +19,35 @@ def video(request, slug):
 from django.db.models import Q
 import random
 
+
+
+from django.shortcuts import render, redirect
+from django.db.models import Q
+
 def search(request):
     query = request.GET.get('q', '').strip()  # pega o texto da pesquisa
+
+    # Se o campo de pesquisa estiver vazio, redireciona para a página inicial
+    if not query:
+        return redirect('galeria')  # aqui 'home' é o name da URL da página inicial
+
     categorias_result = []
     videos_result = []
 
-    if query:
-        palavras = query.split()  # separa a pesquisa em palavras-chave
+    palavras = query.split()  # separa a pesquisa em palavras-chave
 
-        # Busca categorias que contenham qualquer palavra
-        q_categorias = Q()
-        for p in palavras:
-            q_categorias |= Q(nome__icontains=p)
-        categorias_result = Categoria.objects.filter(q_categorias)
+    # Busca categorias que contenham qualquer palavra
+    q_categorias = Q()
+    for p in palavras:
+        q_categorias |= Q(nome__icontains=p)
+    categorias_result = Categoria.objects.filter(q_categorias)
 
-        # Busca vídeos que contenham qualquer palavra do título
-        q_videos = Q()
-        for p in palavras:
-            q_videos |= Q(titulo__icontains=p)
-        videos_result = Video.objects.filter(q_videos)
-    
+    # Busca vídeos que contenham qualquer palavra do título
+    q_videos = Q()
+    for p in palavras:
+        q_videos |= Q(titulo__icontains=p)
+    videos_result = Video.objects.filter(q_videos)
+
     # Se não encontrar nada, retorna vídeos aleatórios
     if not categorias_result.exists() and not videos_result.exists():
         videos_result = Video.objects.order_by('?')[:10]
@@ -49,6 +58,8 @@ def search(request):
         'videos': videos_result,
     }
     return render(request, 'search_results.html', context)
+
+
 
 
 def destaques(request):
