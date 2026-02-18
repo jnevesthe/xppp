@@ -22,6 +22,8 @@ footer { margin-top:30px; text-align:center; color:#aaa; }
 
 <body>
 
+{% include 'message.html' %}
+
 <h1>{% trans "Resultados para" %} "{{ query }}"</h1>
 
 {% if categorias %}
