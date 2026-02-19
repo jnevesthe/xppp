@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-19 20:07+0000\n"
+"POT-Creation-Date: 2026-02-20 00:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: video/templates/404.html:8
 msgid "Página não encontrada"
-msgstr ""
+msgstr "Página não encontrada"
 
 #: video/templates/404.html:36
 msgid "Página não encontrada!"
@@ -86,6 +87,32 @@ msgstr "Próximo"
 #: video/templates/galeria.html:233 video/templates/ver_video.html:175
 msgid "Destaques"
 msgstr "Destaques"
+
+#: video/templates/galeria.html:235
+msgid "Declaração de Conformidade 18 U.S.C. §2257"
+msgstr "Declaração de Conformidade 18 U.S.C. §2257"
+
+#: video/templates/galeria.html:237
+msgid ""
+"Todos os modelos, atores, atrizes e outras pessoas que aparecem em qualquer "
+"conteúdo sexual explícito neste site tinham mais de dezoito (18) anos no "
+"momento da criação de tais conteúdos."
+msgstr ""
+"Todos os modelos, atores, atrizes e outras pessoas que aparecem em qualquer "
+"conteúdo sexual explícito neste site tinham mais de 18 anos no momento da "
+"criação desses conteúdos."
+
+#: video/templates/galeria.html:239
+msgid ""
+"Os registros exigidos por 18 U.S.C. §2257 e 28 C.F.R. §75 são mantidos pelo "
+"responsável pelos registros."
+msgstr ""
+"Os registros exigidos por 18 U.S.C. §2257 e 28 C.F.R. §75 são mantidos pelo "
+"responsável pelos registros."
+
+#: video/templates/galeria.html:241
+msgid "Contato DMCA / Direitos Autorais:"
+msgstr "Contato DMCA / Direitos Autorais:"
 
 #: video/templates/search_result.html:8 video/templates/search_results.html:8
 msgid "Resultados da pesquisa"
