@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'pt'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -118,11 +118,12 @@ USE_I18N = True
 USE_TZ = True
 
 LANGUAGES = [
+    ('en', 'Inglês'),   
     ('pt', 'Português'),
-    ('en', 'Inglês'),
+    
 ]
 
-MODELTRANSLATION_DEFAULT_LANGUAGE='pt'
+MODELTRANSLATION_DEFAULT_LANGUAGE='en'
 
 
 # Pasta onde ficarão os arquivos de tradução
