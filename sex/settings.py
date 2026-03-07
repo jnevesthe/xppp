@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'modeltranslation',
     'video.apps.VideoConfig',
 ]
 
@@ -51,8 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'video.middleware.TrafficLoggingMiddleware',
-    'video.middleware.Handle404Middleware',
+    'video.middlewares.TrafficLoggingMiddleware',
+    'video.middlewares.Handle404Middleware',
    
 ]
 
