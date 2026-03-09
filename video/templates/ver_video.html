@@ -7,6 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ video.titulo }} - XPPP</title>
 
+<meta http-equiv="Delegate-CH" content="Sec-CH-UA https://s.magsrv.com; Sec-CH-UA-Mobile https://s.magsrv.com; Sec-CH-UA-Arch https://s.magsrv.com; Sec-CH-UA-Model https://s.magsrv.com; Sec-CH-UA-Platform https://s.magsrv.com; Sec-CH-UA-Platform-Version https://s.magsrv.com; Sec-CH-UA-Bitness https://s.magsrv.com; Sec-CH-UA-Full-Version-List https://s.magsrv.com; Sec-CH-UA-Full-Version https://s.magsrv.com;">
+
+
+<link rel="stylesheet" href="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.css"/>
+<script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
+
 <style>
 * { box-sizing: border-box; margin:0; padding:0; font-family: Arial, sans-serif; }
 
@@ -147,24 +153,63 @@ footer a:hover {
     </form>
 </header>
 
-    {% include 'popunder.html' %}
-    {% include 'message.html' %}
+{% include 'popunder.html' %}
+{% include 'message.html' %}
 
 <div class="container">
     <h1>{{ video.titulo }}</h1>
 
-    <video controls>
+    <video id="video-player" controls>
         <source src="{{ video.video.url }}" type="video/mp4">
         {% trans "Seu navegador não suporta vídeo." %}
     </video>
 
-    <div class="actions">
-        <!-- Botão de download -->
-        <a href="{{ video.video.url }}" download class="download">
-            ⬇️ {% trans "Download" %}
-        </a>
+<script>
+fluidPlayer('video-player', {
+    vastOptions: {
+        adList: [
+            {
+                roll: 'preRoll',
+                vastTag: 'https://s.magsrv.com/v1/vast.php?idzone=5868656'
+            }
+        ],
+        skipButtonCaption: 'Remover anúncio em [seconds]',
+        skipButtonClickCaption: 'Remover anúncio',
+        skipOffset: 5
+    }
+});
+</script>
 
-        <!-- Botão de voltar -->
+    <div class="actions">
+        <a href="{{ video.video.url }}" class="download" id="baixar-video">{% trans "⬇️ Download" %}</a>
+
+<script>
+document.getElementById('baixar-video').addEventListener('click', async function(e) {
+    e.preventDefault();
+
+    const videoUrl = "{{ video.video.url }}";  // seu link Cloudinary
+    const fileName = "{{ video.titulo }}.mp4";
+
+    try {
+        const response = await fetch(videoUrl);
+        const blob = await response.blob();
+
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        a.remove();
+    } catch (err) {
+        alert('Erro ao baixar o vídeo.');
+        console.error(err);
+    }
+});
+</script>
+
         <a href="{% url 'galeria' %}" class="voltar">
             ⬅ {% trans "Voltar" %}
         </a>
