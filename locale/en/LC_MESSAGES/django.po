@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XPPP 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 00:08+0100\n"
+"POT-Creation-Date: 2026-03-09 01:04+0000\n"
 "PO-Revision-Date: 2026-02-17 00:30+0000\n"
 "Last-Translator: Your Name <youremail@example.com>\n"
 "Language-Team: English <en@example.com>\n"
@@ -62,7 +62,8 @@ msgstr "Highlights - XPPP"
 msgid "Vídeos em Destaque"
 msgstr "Featured Videos"
 
-#: video/templates/destaques.html:144 video/templates/galeria.html:220
+#: video/templates/destaques.html:144 video/templates/galeria.html:227
+#: video/templates/search_results.html:58
 #: video/templates/videos_categoria.html:159
 msgid "Anterior"
 msgstr "Previous"
@@ -72,31 +73,32 @@ msgstr "Previous"
 msgid "Página %(page_obj.number)s de %(page_obj.paginator.num_pages)s"
 msgstr "Page %(page_obj.number)s of %(page_obj.paginator.num_pages)s"
 
-#: video/templates/destaques.html:150 video/templates/galeria.html:226
+#: video/templates/destaques.html:150 video/templates/galeria.html:239
+#: video/templates/search_results.html:72
 #: video/templates/videos_categoria.html:165
 msgid "Próximo"
 msgstr "Next"
 
 #: video/templates/destaques.html:155 video/templates/galeria.html:178
-#: video/templates/galeria.html:233 video/templates/ver_video.html:175
+#: video/templates/galeria.html:246 video/templates/ver_video.html:175
 msgid "Destaques"
 msgstr "Highlights"
 
-#: video/templates/galeria.html:235
+#: video/templates/galeria.html:248
 msgid "Declaração de Conformidade 18 U.S.C. §2257"
 msgstr "18 U.S.C. §2257 Compliance Statement"
 
-#: video/templates/galeria.html:237
+#: video/templates/galeria.html:250
 msgid ""
 "Todos os modelos, atores, atrizes e outras pessoas que aparecem em qualquer "
 "conteúdo sexual explícito neste site tinham mais de dezoito (18) anos no "
 "momento da criação de tais conteúdos."
 msgstr ""
 "All models, actors, actresses, and other persons appearing in any sexually "
-"explicit content on this website were over eighteen (18) years of age at "
-"the time such content was created."
+"explicit content on this website were over eighteen (18) years of age at the "
+"time such content was created."
 
-#: video/templates/galeria.html:239
+#: video/templates/galeria.html:252
 msgid ""
 "Os registros exigidos por 18 U.S.C. §2257 e 28 C.F.R. §75 são mantidos pelo "
 "responsável pelos registros."
@@ -104,7 +106,7 @@ msgstr ""
 "The records required by 18 U.S.C. §2257 and 28 C.F.R. §75 are kept by the "
 "custodian of records."
 
-#: video/templates/galeria.html:241
+#: video/templates/galeria.html:254
 msgid "Contato DMCA / Direitos Autorais:"
 msgstr "DMCA / Copyright Contact:"
 
@@ -112,21 +114,33 @@ msgstr "DMCA / Copyright Contact:"
 msgid "Resultados da pesquisa"
 msgstr "Search results"
 
-#: video/templates/search_result.html:25 video/templates/search_results.html:27
+#: video/templates/search_result.html:25 video/templates/search_results.html:28
 msgid "Resultados para"
 msgstr "Results for"
 
-#: video/templates/search_result.html:28 video/templates/search_results.html:30
+#: video/templates/search_result.html:28 video/templates/search_results.html:31
 msgid "Categorias relacionadas:"
 msgstr "Related categories:"
 
-#: video/templates/search_result.html:37 video/templates/search_results.html:39
+#: video/templates/search_result.html:37
 msgid "Vídeos relacionados:"
 msgstr "Related videos:"
 
-#: video/templates/search_result.html:49 video/templates/search_results.html:51
+#: video/templates/search_result.html:49
 msgid "Nenhum vídeo encontrado. Aqui estão alguns aleatórios:"
 msgstr "No videos found. Here are some random ones:"
+
+#: video/templates/search_results.html:40
+#, fuzzy
+#| msgid "Vídeos relacionados:"
+msgid "Vídeos encontrados:"
+msgstr "Related videos:"
+
+#: video/templates/search_results.html:78
+#, fuzzy
+#| msgid "Nenhum vídeo nesta categoria."
+msgid "Nenhum vídeo encontrado."
+msgstr "No videos in this category."
 
 #: video/templates/ver_video.html:158
 msgid "Seu navegador não suporta vídeo."

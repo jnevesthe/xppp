@@ -2,11 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER                                                 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.             #                                                 #, fuzzy
 msgid ""
-msgstr ""                                         "Project-Id-Version: PACKAGE VERSION\n"           "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 23:44+0000\n"       "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"    "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"    "Language-Team: LANGUAGE <LL@li.org>\n"
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 01:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
-"MIME-Version: 1.0\n"                             "Content-Type: text/plain; charset=UTF-8\n"       "Content-Transfer-Encoding: 8bit\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: video/templates/404.html:8
 msgid "Página não encontrada"
 msgstr "Página não encontrada"
@@ -31,7 +39,9 @@ msgstr "Categorias | XPPP"
 msgid "Categorias"
 msgstr "Categorias"
 
-#: video/templates/categorias.html:125 video/templates/destaques.html:125 video/templates/galeria.html:182 video/templates/ver_video.html:145 video/templates/videos_categoria.html:134
+#: video/templates/categorias.html:125 video/templates/destaques.html:125
+#: video/templates/galeria.html:182 video/templates/ver_video.html:145
+#: video/templates/videos_categoria.html:134
 msgid "Pesquisar vídeos..."
 msgstr "Pesquisar vídeos..."
 
@@ -55,7 +65,9 @@ msgstr "Destaques - XPPP"
 msgid "Vídeos em Destaque"
 msgstr "Vídeos em Destaque"
 
-#: video/templates/destaques.html:144 video/templates/galeria.html:220 video/templates/videos_categoria.html:159
+#: video/templates/destaques.html:144 video/templates/galeria.html:227
+#: video/templates/search_results.html:58
+#: video/templates/videos_categoria.html:159
 msgid "Anterior"
 msgstr "Anterior"
 
@@ -64,27 +76,40 @@ msgstr "Anterior"
 msgid "Página %(page_obj.number)s de %(page_obj.paginator.num_pages)s"
 msgstr "Página %(page_obj.number)s de %(page_obj.paginator.num_pages)s"
 
-#: video/templates/destaques.html:150 video/templates/galeria.html:226 video/templates/videos_categoria.html:165
+#: video/templates/destaques.html:150 video/templates/galeria.html:239
+#: video/templates/search_results.html:72
+#: video/templates/videos_categoria.html:165
 msgid "Próximo"
 msgstr "Próximo"
 
-#: video/templates/destaques.html:155 video/templates/galeria.html:178 video/templates/galeria.html:233 video/templates/ver_video.html:175
+#: video/templates/destaques.html:155 video/templates/galeria.html:178
+#: video/templates/galeria.html:246 video/templates/ver_video.html:175
 msgid "Destaques"
 msgstr "Destaques"
 
-#: video/templates/galeria.html:235
+#: video/templates/galeria.html:248
 msgid "Declaração de Conformidade 18 U.S.C. §2257"
 msgstr "Declaração de Conformidade 18 U.S.C. §2257"
 
-#: video/templates/galeria.html:237
-msgid "Todos os modelos, atores, atrizes e outras pessoas que aparecem em qualquer conteúdo sexual explícito neste site tinham mais de dezoito (18) anos no momento da criação de tais conteúdos."
-msgstr "Todos os modelos, atores, atrizes e outras pessoas que aparecem em qualquer conteúdo sexual explícito neste site tinham mais de dezoito (18) anos no momento da criação de tais conteúdos."
+#: video/templates/galeria.html:250
+msgid ""
+"Todos os modelos, atores, atrizes e outras pessoas que aparecem em qualquer "
+"conteúdo sexual explícito neste site tinham mais de dezoito (18) anos no "
+"momento da criação de tais conteúdos."
+msgstr ""
+"Todos os modelos, atores, atrizes e outras pessoas que aparecem em qualquer "
+"conteúdo sexual explícito neste site tinham mais de dezoito (18) anos no "
+"momento da criação de tais conteúdos."
 
-#: video/templates/galeria.html:239
-msgid "Os registros exigidos por 18 U.S.C. §2257 e 28 C.F.R. §75 são mantidos pelo responsável pelos registros."
-msgstr "Os registros exigidos por 18 U.S.C. §2257 e 28 C.F.R. §75 são mantidos pelo responsável pelos registros."
+#: video/templates/galeria.html:252
+msgid ""
+"Os registros exigidos por 18 U.S.C. §2257 e 28 C.F.R. §75 são mantidos pelo "
+"responsável pelos registros."
+msgstr ""
+"Os registros exigidos por 18 U.S.C. §2257 e 28 C.F.R. §75 são mantidos pelo "
+"responsável pelos registros."
 
-#: video/templates/galeria.html:241
+#: video/templates/galeria.html:254
 msgid "Contato DMCA / Direitos Autorais:"
 msgstr "Contato DMCA / Direitos Autorais:"
 
@@ -92,21 +117,33 @@ msgstr "Contato DMCA / Direitos Autorais:"
 msgid "Resultados da pesquisa"
 msgstr "Resultados da pesquisa"
 
-#: video/templates/search_result.html:25 video/templates/search_results.html:27
+#: video/templates/search_result.html:25 video/templates/search_results.html:28
 msgid "Resultados para"
 msgstr "Resultados para"
 
-#: video/templates/search_result.html:28 video/templates/search_results.html:30
+#: video/templates/search_result.html:28 video/templates/search_results.html:31
 msgid "Categorias relacionadas:"
 msgstr "Categorias relacionadas:"
 
-#: video/templates/search_result.html:37 video/templates/search_results.html:39
+#: video/templates/search_result.html:37
 msgid "Vídeos relacionados:"
 msgstr "Vídeos relacionados:"
 
-#: video/templates/search_result.html:49 video/templates/search_results.html:51
+#: video/templates/search_result.html:49
 msgid "Nenhum vídeo encontrado. Aqui estão alguns aleatórios:"
 msgstr "Nenhum vídeo encontrado. Aqui estão alguns aleatórios:"
+
+#: video/templates/search_results.html:40
+#, fuzzy
+#| msgid "Vídeos relacionados:"
+msgid "Vídeos encontrados:"
+msgstr "Vídeos relacionados:"
+
+#: video/templates/search_results.html:78
+#, fuzzy
+#| msgid "Nenhum vídeo nesta categoria."
+msgid "Nenhum vídeo encontrado."
+msgstr "Nenhum vídeo nesta categoria."
 
 #: video/templates/ver_video.html:158
 msgid "Seu navegador não suporta vídeo."

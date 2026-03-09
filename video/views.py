@@ -21,45 +21,56 @@ import random
 
 
 
-from django.shortcuts import render, redirect
 from django.db.models import Q
+from django.core.paginator import Paginator
+from django.shortcuts import render, redirect
+
+from django.db.models import Q
+from django.core.paginator import Paginator
+from django.shortcuts import render, redirect
+
+
+
+
+from django.db.models import Q
+from django.core.paginator import Paginator
+from django.shortcuts import render, redirect
 
 def search(request):
-    query = request.GET.get('q', '').strip()  # pega o texto da pesquisa
-
-    # Se o campo de pesquisa estiver vazio, redireciona para a página inicial
+    query = request.GET.get('q', '').strip()
     if not query:
-        return redirect('galeria')  # aqui 'home' é o name da URL da página inicial
+        return redirect('galeria')  # redireciona se pesquisa vazia
 
-    categorias_result = []
-    videos_result = []
+    palavras = query.split()
 
-    palavras = query.split()  # separa a pesquisa em palavras-chave
-
-    # Busca categorias que contenham qualquer palavra
+    # Busca categorias
     q_categorias = Q()
     for p in palavras:
         q_categorias |= Q(nome__icontains=p)
     categorias_result = Categoria.objects.filter(q_categorias)
 
-    # Busca vídeos que contenham qualquer palavra do título
+    # Busca vídeos
     q_videos = Q()
     for p in palavras:
         q_videos |= Q(titulo__icontains=p)
-    videos_result = Video.objects.filter(q_videos)
+    videos_result = Video.objects.filter(q_videos).distinct()
 
-    # Se não encontrar nada, retorna vídeos aleatórios
+    # Se não encontrar resultados, pega vídeos aleatórios
     if not categorias_result.exists() and not videos_result.exists():
-        videos_result = Video.objects.order_by('?')[:10]
+        videos_result = Video.objects.order_by('?')
+
+    # Paginação de 10 vídeos por página
+    paginator = Paginator(videos_result, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'query': query,
         'categorias': categorias_result,
-        'videos': videos_result,
+        'page_obj': page_obj,
     }
+
     return render(request, 'search_results.html', context)
-
-
 
 
 def destaques(request):
