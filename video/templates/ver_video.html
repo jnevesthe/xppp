@@ -159,13 +159,20 @@ footer a:hover {
 <div class="container">
     <h1>{{ video.titulo }}</h1>
 
-    <video id="video-player" controls>
-        <source src="{{ video.video.url }}" type="video/mp4">
-        {% trans "Seu navegador não suporta vídeo." %}
-    </video>
+    
+    <!-- Video player -->
+<video id="video-player" controls style="width:100%; max-width:400px; aspect-ratio:9/16; object-fit:cover; border-radius:8px; display:block; margin:0 auto 20px auto;">
+    <source src="{{ video.video.url }}" type="video/mp4">
+    {% trans "Seu navegador não suporta vídeo." %}
+</video>
 
 <script>
 fluidPlayer('video-player', {
+    layoutControls: {
+        controlBar: {
+            autoHide: true
+        }
+    },
     vastOptions: {
         adList: [
             {
@@ -179,6 +186,7 @@ fluidPlayer('video-player', {
     }
 });
 </script>
+
 
     <div class="actions">
         <a href="{{ video.video.url }}" class="download" id="baixar-video">{% trans "⬇️ Download" %}</a>
