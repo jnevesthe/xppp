@@ -15,6 +15,10 @@ urlpatterns = [
     path('emphasis/', views.destaques, name='emphasis'),
     path('categorias/', views.lista_categorias, name='categorias'),
     path('categoria/<slug:slug>/', views.videos_por_categoria, name='videos_categoria'),
+    path('worker.js', TemplateView.as_view(
+        template_name="worker.js",
+        content_type='application/javascript'
+    )),
 ]
 
 # Serve arquivos estáticos e mídia no DEBUG (Termux)
